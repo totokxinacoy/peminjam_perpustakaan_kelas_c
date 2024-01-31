@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:peminjam_perpustakaan_kelas_c/app/routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -27,6 +28,9 @@ class LoginView extends GetView<LoginController> {
               ),
               TextFormField(
                   controller: controller.passwordController,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  obscureText: true,
                   decoration: InputDecoration(hintText: "Masukan Password"),
                   validator: (value) {
                     if (value!.length < 2) {
@@ -40,7 +44,9 @@ class LoginView extends GetView<LoginController> {
                   ? CircularProgressIndicator()
                   : ElevatedButton(onPressed: () {
                 controller.login();
-              }, child: Text("Login")))
+              }, child: Text("Login"))),
+              ElevatedButton(onPressed: ()=>Get.toNamed(Routes.REGISTER),
+                  child: Text("Open Register"))
             ],
           ),)
       ),
