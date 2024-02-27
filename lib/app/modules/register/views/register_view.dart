@@ -10,61 +10,104 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AddBookView'),
-        centerTitle: true,
-      ),
+      backgroundColor: Color(0xFF181820),
       body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(80.0),
           child: Form(
             key: controller.formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start, // Align to the top
               children: [
+                // Logo (Assuming you have an 'assets/logo.png' image)
+                Image.asset(
+                  'assets/marnoski.png',
+                  width: 300,
+                  height: 300,
+                ),
+                SizedBox(height: 5.0),// Reduce the space between logo and text fields
                 TextFormField(
                   controller: controller.namaController,
-                  decoration: InputDecoration(hintText: "Masukkan Nama Pengguna"),
+                  decoration: InputDecoration(
+                    hintText: "Masukan Nama",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
                   validator: (value) {
                     if (value!.length < 2) {
-                      return "Nama Tidak Boleh Kosong";
+                      return "Nama tidak boleh kosong";
                     }
                     return null;
                   },
                 ),
+                SizedBox(height: 15.0), // Reduce the space between text fields
                 TextFormField(
                   controller: controller.usernameController,
-                  decoration: InputDecoration(hintText: "Masukkan Username"),
+                  decoration: InputDecoration(
+                    hintText: "Masukan UserName",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
                   validator: (value) {
                     if (value!.length < 2) {
-                      return "Username tidak boleh kosong";
+                      return "UserName tidak boleh kosong";
                     }
                     return null;
                   },
                 ),
+                SizedBox(height: 15.0), // Reduce the space between text fields
                 TextFormField(
                   controller: controller.telpController,
-                  decoration: InputDecoration(hintText: "Masukkan Nomor Telpon"),
+                  decoration: InputDecoration(
+                    hintText: "Masukan Telepon",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
                   validator: (value) {
                     if (value!.length < 2) {
-                      return "Nomor Telpon tidak boleh kosong";
+                      return "Telepon tidak boleh kosong";
                     }
                     return null;
                   },
                 ),
+                SizedBox(height: 15.0), // Reduce the space between text fields
                 TextFormField(
                   controller: controller.alamatController,
-                  decoration: InputDecoration(hintText: "Masukkan Alamat"),
+                  decoration: InputDecoration(
+                    hintText: "Masukan Alamat",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
                   validator: (value) {
                     if (value!.length < 2) {
-                      return "alamat tidak boleh kosong";
+                      return "Alamat tidak boleh kosong";
                     }
                     return null;
                   },
                 ),
+                SizedBox(height: 15.0), // Reduce the space between text fields
                 TextFormField(
                   controller: controller.passwordController,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  obscureText: true,
-                  decoration: InputDecoration(hintText: "Masukkan Password"),
+                  decoration: InputDecoration(
+                    hintText: "Masukan Password",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
                   validator: (value) {
                     if (value!.length < 2) {
                       return "Password tidak boleh kosong";
@@ -72,16 +115,21 @@ class RegisterView extends GetView<RegisterController> {
                     return null;
                   },
                 ),
+                SizedBox(height: 16.0), // Maintain space between text field and button
                 Obx(() => controller.loading.value
                     ? CircularProgressIndicator()
                     : ElevatedButton(
-                    onPressed: () {
-                      controller.addAkun();
-                    },
-                    child: Text("Register")))
+                  onPressed: () {
+                    controller.addAkun();
+                  },
+                  child: Text("Registrasi"),
+                )),
+                Spacer(), // Use Spacer to fill available space and push widgets to the top
               ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

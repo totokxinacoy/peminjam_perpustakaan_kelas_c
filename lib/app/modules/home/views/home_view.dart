@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:peminjam_perpustakaan_kelas_c/app/routes/app_pages.dart';
 
@@ -10,80 +10,78 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-        body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xd4d4d4).withOpacity(1),
-                          offset: Offset(3, 3),
-                          blurRadius: 2,
-                          spreadRadius: 0,
-                        )
-                      ]),
-                  height: 100,
-                  width: 170,
-                  child: ElevatedButton(
-                    onPressed: (){Get.toNamed(Routes.BOOK);}, child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.book, size: 50),
-                      Text("Buku", textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15))
-                    ],
-                  ),
+      backgroundColor: Colors.black,
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(10), // add padding here
+                  child: Text(
+                    'Rekomendasi',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
-                SizedBox(
-                  width: 20,
+              ),
+            ],
+          ),
+          Container(
+            width: double.infinity,
+            height: 200,
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 200.0,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 3),
+                enlargeCenterPage: true,
+              ),
+              items: [
+                Container(
+                  margin: EdgeInsets.all(5.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    child: Image.network(
+                      'https://via.placeholder.com/150',
+                      fit: BoxFit.cover,
+                      width: 1000.0,
+                      height: 200.0,
+                    ),
+                  ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xd4d4d4).withOpacity(1),
-                          offset: Offset(3, 3),
-                          blurRadius: 2,
-                          spreadRadius: 0,
-                        )
-                      ]),
-                  height: 100,
-                  width: 170,
-                  child: ElevatedButton(
-                    onPressed: (){Get.toNamed(Routes.PEMINJAMAN);}, child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.person, size: 50),
-                      Text("Pinjam", textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15))
-                    ],
+                  margin: EdgeInsets.all(5.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    child: Image.network(
+                      'https://via.placeholder.com/150',
+                      fit: BoxFit.cover,
+                      width: 1000.0,
+                      height: 200.0,
+                    ),
                   ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(5.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    child: Image.network(
+                      'https://via.placeholder.com/150',
+                      fit: BoxFit.cover,
+                      width: 1000.0,
+                      height: 200.0,
+                    ),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-            ),
-
-          ],
-        )
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20),
+          ),
+          // ...
+        ],
+      ),
     );
   }
 }
